@@ -1,7 +1,7 @@
-import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:budgets_bites/button/button.dart';
+import 'package:auth_buttons/auth_buttons.dart';
 
 class SignUp extends StatelessWidget{
   const SignUp({super.key});
@@ -19,7 +19,7 @@ class SignUp extends StatelessWidget{
         body: Stack(
           children: [
             Container(
-              padding: EdgeInsets.only(left: 10,top:360) ,
+              padding: const EdgeInsets.only(left: 10,top:380) ,
               child: Text('Sign Up',style: TextStyle(color: Colors.red[900],fontSize: 28,fontFamily: 'Montserrat',fontWeight: FontWeight.w700 ),),
             ),
             SingleChildScrollView(
@@ -34,11 +34,11 @@ class SignUp extends StatelessWidget{
                         hintText: 'Email',
                         border: OutlineInputBorder(
                           borderRadius : BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.black),
+                          borderSide: const BorderSide(color: Colors.black),
                         )
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     TextField(
@@ -49,12 +49,12 @@ class SignUp extends StatelessWidget{
                           hintText: 'Password',
                           border: OutlineInputBorder(
                             borderRadius : BorderRadius.circular(10),
-                            borderSide: BorderSide(color: Colors.black),
+                            borderSide: const BorderSide(color: Colors.black),
 
                           )
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 25,
                     ),
                     Row(
@@ -62,7 +62,7 @@ class SignUp extends StatelessWidget{
                         ElevatedButton(
 
                           style:buttonPrimary,
-                          child: Text('SIGNUP'),
+                          child: const Text('SIGNUP',),
 
                           onPressed:()
                           {
@@ -70,8 +70,67 @@ class SignUp extends StatelessWidget{
                           },
                         )
                       ],
-                    )
+                    ),
 
+                     Row(
+                       mainAxisAlignment: MainAxisAlignment.center,
+                       children: [
+                         Text('Alreay have an account?',style:TextStyle(fontSize: 10) ,),
+
+                         TextButton(
+                           style: buttonSecondary,
+                           child: Text('SIGN IN'),
+                           onPressed: (){
+                             print('welcome');
+                           },
+                         )
+                       ],
+                     ),
+
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    const Padding(padding: EdgeInsets.symmetric(horizontal: 25.0)),
+                    Row(
+                      children: [
+                        Expanded(child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        )),
+                        const Text('or Sign up with'),
+                        Expanded(child: Divider(
+                          thickness: 0.5,
+                          color: Colors.grey[400],
+                        )),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        GoogleAuthButton(
+                          onPressed: () {},
+                          style: AuthButtonStyle(
+                            buttonType: AuthButtonType.icon,
+                            iconType: AuthIconType.secondary,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 5,
+                        ),
+                        AppleAuthButton(
+                          onPressed: () {},
+                          style: AuthButtonStyle(
+                            buttonType: AuthButtonType.icon,
+                            iconType: AuthIconType.secondary,
+                          ),
+                        ),
+                      ],
+
+
+                    )
                   ],
                 ),
               ),
