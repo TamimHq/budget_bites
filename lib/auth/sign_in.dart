@@ -69,8 +69,6 @@ class _SignInState extends State<SignIn> {
                       )
                     ],
                     ),
-
-
                   Row(
                     children: [
                       ElevatedButton(
@@ -105,24 +103,24 @@ class _SignInState extends State<SignIn> {
                   ),
 
                   const SizedBox(
-                    height: 30,
+                    height: 40,
                   ),
                   const Padding(padding: EdgeInsets.symmetric(horizontal: 25.0)),
                   Row(
                     children: [
                       Expanded(child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
+                        thickness: 1.0,
+                        color: Colors.grey[600],
                       )),
                       const Text('or Login with'),
                       Expanded(child: Divider(
-                        thickness: 0.5,
-                        color: Colors.grey[400],
+                        thickness: 1.0,
+                        color: Colors.grey[600],
                       )),
                     ],
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 30,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,

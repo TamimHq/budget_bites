@@ -60,6 +60,22 @@ class _SignUpState extends State<SignUp> {
                       ),
                     ),
                     const SizedBox(
+                      height: 7,
+                    ),
+                    TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                          fillColor: Colors.white,
+                          filled: true,
+                          hintText: 'Rewrite Password',
+                          border: OutlineInputBorder(
+                            borderRadius : BorderRadius.circular(10),
+                            borderSide: const BorderSide(color: Colors.black),
+
+                          )
+                      ),
+                    ),
+                    const SizedBox(
                       height: 25,
                     ),
                     Row(
@@ -83,8 +99,8 @@ class _SignUpState extends State<SignUp> {
                          const Text('Alreay have an account?',style:TextStyle(fontSize: 10) ,),
 
                          TextButton(
-                           style: buttonSecondary,
-                           child: const Text('SIGN IN'),
+                           // style: buttonSecondary,
+                           child: Text('SIGN IN',style: TextStyle(fontSize: 10,color: Colors.lightBlue[200]),),
                            onPressed: (){
                              Navigator.push(
                                context,
@@ -102,13 +118,13 @@ class _SignUpState extends State<SignUp> {
                     Row(
                       children: [
                         Expanded(child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
+                          thickness: 1.0,
+                          color: Colors.grey[600],
                         )),
                         const Text('or Sign up with'),
                         Expanded(child: Divider(
-                          thickness: 0.5,
-                          color: Colors.grey[400],
+                          thickness: 1.0,
+                          color: Colors.grey[600],
                         )),
                       ],
                     ),
