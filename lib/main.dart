@@ -1,20 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:budgets_bites/auth/sign_up.dart';
+import 'package:budgets_bites/auth/sign_in.dart';
 
 void main() {
-  runApp(  MyApp());
+  runApp(  const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+   const MyApp({super.key});
 
 
 
   @override
   Widget build(BuildContext context) {
-    return   const MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SignUp(),
+      initialRoute: '/signing',
+      routes: {
+        '/signing':(context)=>const SignIn(),
+        '/signup':(context)=>const SignUp(),
+
+      },
     );
   }
 }

@@ -1,14 +1,19 @@
 
+import 'package:budgets_bites/auth/sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:budgets_bites/button/button.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 
-class SignUp extends StatelessWidget{
+class SignUp extends StatefulWidget{
   const SignUp({super.key});
 
   @override
-  Widget build(BuildContext context){
-    return Container(
+  State<SignUp> createState() => _SignUpState();
+}
+
+class _SignUpState extends State<SignUp> {
+  @override
+  Widget build(BuildContext context)=> Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/images/sign_up.png'),fit: BoxFit.cover
@@ -75,13 +80,16 @@ class SignUp extends StatelessWidget{
                      Row(
                        mainAxisAlignment: MainAxisAlignment.center,
                        children: [
-                         Text('Alreay have an account?',style:TextStyle(fontSize: 10) ,),
+                         const Text('Alreay have an account?',style:TextStyle(fontSize: 10) ,),
 
                          TextButton(
                            style: buttonSecondary,
-                           child: Text('SIGN IN'),
+                           child: const Text('SIGN IN'),
                            onPressed: (){
-                             print('welcome');
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(builder: (context)=>const SignIn()),
+                             );
                            },
                          )
                        ],
@@ -112,17 +120,17 @@ class SignUp extends StatelessWidget{
                       children: [
                         GoogleAuthButton(
                           onPressed: () {},
-                          style: AuthButtonStyle(
+                          style: const AuthButtonStyle(
                             buttonType: AuthButtonType.icon,
                             iconType: AuthIconType.secondary,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 5,
                         ),
-                        AppleAuthButton(
+                        FacebookAuthButton(
                           onPressed: () {},
-                          style: AuthButtonStyle(
+                          style: const AuthButtonStyle(
                             buttonType: AuthButtonType.icon,
                             iconType: AuthIconType.secondary,
                           ),
@@ -141,7 +149,4 @@ class SignUp extends StatelessWidget{
         ),
       ),
     );
-
-
-  }
 }

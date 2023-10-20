@@ -10,8 +10,3 @@ final ButtonStyle buttonPrimary = ElevatedButton.styleFrom(
   )
 
 );
-final ButtonStyle buttonSecondary = TextButton.styleFrom(
-      foregroundColor: Colors.blue,
-      textStyle: TextStyle(fontSize:10),
-
-);
