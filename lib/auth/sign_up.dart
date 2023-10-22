@@ -1,7 +1,6 @@
 
 import 'package:budgets_bites/auth/sign_in.dart';
 import 'package:flutter/material.dart';
-import 'package:budgets_bites/button/button.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 
 class SignUp extends StatefulWidget{
@@ -79,22 +78,30 @@ class _SignUpState extends State<SignUp> {
                           ),
                         ),
                         const SizedBox(
-                          height: 25,
+                          height: 10,
                         ),
-                        Row(
-                          children: [
-                            ElevatedButton(
+                            Row(
+                              children: [
+                                ElevatedButton(
 
-                              style:buttonPrimary,
-                              child: const Text('SIGNUP',),
+                                  style:ButtonStyle(
+                                       backgroundColor: MaterialStateProperty.all(Colors.red[900]),
+                                        foregroundColor: MaterialStateProperty.all(Colors.white),
+                                       padding: MaterialStateProperty.all( EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.1)),
+                                       shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(Radius.circular(50)),
+                                         )),
+                                         ),
+                                  child: const Text('SIGNUP',),
 
-                              onPressed:()
-                              {
-                                print('Completed');
-                              },
-                            )
-                          ],
-                        ),
+                                  onPressed:()
+                                  {
+                                    print('Completed');
+                                  },
+                                ),
+                              ],
+                            ),
+
 
                          Row(
                            mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,5 @@
 import 'package:budgets_bites/auth/sign_up.dart';
 import 'package:flutter/material.dart';
-import 'package:budgets_bites/button/button.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 
 class SignIn extends StatefulWidget{
@@ -77,7 +76,15 @@ class _SignInState extends State<SignIn> {
 
                           ElevatedButton(
 
-                            style:buttonPrimary,
+                            style:
+                              ButtonStyle(
+                                backgroundColor: MaterialStateProperty.all(Colors.red[900]),
+                                foregroundColor: MaterialStateProperty.all(Colors.white),
+                                padding: MaterialStateProperty.all( EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.1)),
+                                shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.all(Radius.circular(50)),
+                                )),
+                              ),
                             child: const Text('Sign in',),
 
                             onPressed:()

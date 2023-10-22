@@ -16,7 +16,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin{
     super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
     
-    Future.delayed(Duration(seconds: 2),() {
+    Future.delayed(const Duration(seconds: 2),() {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>const SignIn()),);
     });
   }
@@ -46,7 +46,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin{
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset('assets/images/LOGO.png'),
-                  Text('Budget Bites',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600,fontFamily: 'Poppins'),)
+                  const Text('Budget Bites',style: TextStyle(fontSize: 30,fontWeight: FontWeight.w600,fontFamily: 'Poppins'),)
                 ],
               ),
             ),
