@@ -18,7 +18,7 @@ class _SignUpState extends State<SignUp> {
           return Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('assets/images/sign_up.png'),fit: BoxFit.cover
+                image: AssetImage('assets/images/SIGN UP.png'),fit: BoxFit.cover
             ),
           ),
           child:  Scaffold(
@@ -122,7 +122,7 @@ class _SignUpState extends State<SignUp> {
                          ),
 
                         const SizedBox(
-                          height: 30,
+                          height: 10,
                         ),
                         const Padding(padding: EdgeInsets.symmetric(horizontal: 25.0)),
                         Row(
@@ -139,7 +139,7 @@ class _SignUpState extends State<SignUp> {
                           ],
                         ),
                         const SizedBox(
-                          height: 10,
+                          height: 3,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -163,6 +163,38 @@ class _SignUpState extends State<SignUp> {
                             ),
                           ],
 
+
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const Text('By siging up you agree with our',style: TextStyle(fontSize: 10),),
+                            const SizedBox(
+                              width: 0,
+                            ),
+                            TextButton(
+                              // style: buttonSecondary,
+                              child: Text('T&C',style: TextStyle(fontSize: 10,color: Colors.lightBlue[200]),),
+                              onPressed: (){
+                                print('das');
+
+                              },
+                            ),
+                            const SizedBox(
+                              width: 0,
+                            ),
+                            const Text('and',style: TextStyle(fontSize: 10),),
+                            const SizedBox(
+                              width: 0,
+                            ),
+                            TextButton(
+                              // style: buttonSecondary,
+                              child: Text('SIGN IN',style: TextStyle(fontSize: 10,color: Colors.lightBlue[200]),),
+                              onPressed: (){
+                                print(('das'));
+                              },
+                            )
+                          ],
 
                         )
                       ],

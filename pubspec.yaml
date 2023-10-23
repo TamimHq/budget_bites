@@ -58,8 +58,8 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/images/sign_up.png
-    - assets/images/sign_in.png
+    - assets/images/SIGN IN.png
+    - assets/images/SIGN UP.png
     - assets/images/LOGO.png
 
   # The following line ensures that the Material Icons font is
