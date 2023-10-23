@@ -101,23 +101,27 @@ class _SignUpState extends State<SignUp> {
                                 ),
                               ],
                             ),
+                         const SizedBox(
+                           height: 15,
+                         ),
 
 
                          Row(
                            mainAxisAlignment: MainAxisAlignment.center,
                            children: [
                              const Text('Alreay have an account?',style:TextStyle(fontSize: 10) ,),
+                             const SizedBox(
+                               width: 10,
+                             ),
 
-                             TextButton(
-                               // style: buttonSecondary,
-                               child: Text('SIGN IN',style: TextStyle(fontSize: 10,color: Colors.lightBlue[200]),),
-                               onPressed: (){
-                                 Navigator.push(
-                                   context,
-                                   MaterialPageRoute(builder: (context)=>const SignIn()),
-                                 );
-                               },
-                             )
+                             Container(
+                               child: InkWell(
+                                   onTap: (){
+                                     Navigator.push(context,
+                                         MaterialPageRoute(builder: (context)=>const SignIn()));
+                                   },
+                                   child: Text('sign in',style: TextStyle(fontSize: 10,color: Colors.blueAccent[200]),)),
+                             ),
                            ],
                          ),
 
@@ -139,7 +143,7 @@ class _SignUpState extends State<SignUp> {
                           ],
                         ),
                         const SizedBox(
-                          height: 3,
+                          height: 10,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -165,35 +169,30 @@ class _SignUpState extends State<SignUp> {
 
 
                         ),
+                        const SizedBox(
+                          height: 10,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text('By siging up you agree with our',style: TextStyle(fontSize: 10),),
-                            const SizedBox(
-                              width: 0,
-                            ),
-                            TextButton(
-                              // style: buttonSecondary,
-                              child: Text('T&C',style: TextStyle(fontSize: 10,color: Colors.lightBlue[200]),),
-                              onPressed: (){
-                                print('das');
-
-                              },
-                            ),
-                            const SizedBox(
-                              width: 0,
+                              const Text('By siging up you agree with our',style: TextStyle(fontSize: 10),),
+                            Container(
+                              child: InkWell(
+                                  onTap: (){
+                                   print('a') ;
+                                  },
+                                  child: Text('T&C',style: TextStyle(fontSize: 10,color: Colors.blueAccent[200]),)),
                             ),
                             const Text('and',style: TextStyle(fontSize: 10),),
-                            const SizedBox(
-                              width: 0,
+                            Container(
+                              child: InkWell(
+                                  onTap: (){
+                                    print('dont');
+                                  },
+                                  child: Text('privacy and policy',style: TextStyle(fontSize: 10,color: Colors.blueAccent[200]),)),
                             ),
-                            TextButton(
-                              // style: buttonSecondary,
-                              child: Text('SIGN IN',style: TextStyle(fontSize: 10,color: Colors.lightBlue[200]),),
-                              onPressed: (){
-                                print(('das'));
-                              },
-                            )
+
+
                           ],
 
                         )

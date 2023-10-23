@@ -101,16 +101,17 @@ class _SignInState extends State<SignIn> {
                             children: [
 
                               const Text("Don't have an account?",style:TextStyle(fontSize: 10) ,),
+                              SizedBox(
+                                width: 5,
+                              ),
 
-                              TextButton(
-                                // style: buttonSecondary,
-                                child: Text('SIGN UP',style: TextStyle(fontSize: 10,color: Colors.lightBlue[200]),),
-                                onPressed: (){
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context)=>const SignUp()),
-                                  );
-                                },
+                              Container(
+                                child: InkWell(
+                                    onTap: (){
+                                      Navigator.push(context,
+                                          MaterialPageRoute(builder: (context)=>const SignUp()));
+                                    },
+                                    child: Text('sign up',style: TextStyle(fontSize: 10,color: Colors.blueAccent[200]),)),
                               ),
                             ],
                           ),
