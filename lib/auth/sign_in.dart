@@ -105,14 +105,12 @@ class _SignInState extends State<SignIn> {
                                 width: 5,
                               ),
 
-                              Container(
-                                child: InkWell(
-                                    onTap: (){
-                                      Navigator.push(context,
-                                          MaterialPageRoute(builder: (context)=>const SignUp()));
-                                    },
-                                    child: Text('sign up',style: TextStyle(fontSize: 10,color: Colors.blueAccent[200]),)),
-                              ),
+                              InkWell(
+                                  onTap: (){
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context)=>const SignUp()));
+                                  },
+                                  child: Text('sign up',style: TextStyle(fontSize: 10,color: Colors.blueAccent[200]),)),
                             ],
                           ),
 
