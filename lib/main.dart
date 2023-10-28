@@ -1,3 +1,4 @@
+import 'package:budgets_bites/profile_edit/profile_editing.dart';
 import 'package:flutter/material.dart';
 
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
 
       ),
-      home: const Splash(),
+      home: const ProfileEdit(),
     );
   }
 }
