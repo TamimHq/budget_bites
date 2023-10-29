@@ -25,7 +25,7 @@ class _ProfileEditState extends State<ProfileEdit> {
             ),
         ),
         bottom: PreferredSize(
-            preferredSize: Size.fromHeight(80.0),
+            preferredSize: const Size.fromHeight(80.0),
             child: Container(
               color: Colors.pinkAccent,
               height: 50.0,
@@ -41,86 +41,88 @@ class _ProfileEditState extends State<ProfileEdit> {
 
 
       ),
-         body: Column(
+         body: SingleChildScrollView(
+           child: Column(
 
-           children: <Widget>[
-          SizedBox(height: 65),
-             TextField(
+             children: <Widget>[
+            SizedBox(height: 65),
+               TextField(
 
 
 
-               decoration: InputDecoration(
-                   fillColor: Colors.white,
-                   filled: true,
-                   hintText: 'Username',
-                   border: OutlineInputBorder(
-                     borderRadius : BorderRadius.circular(10),
-                     borderSide: const BorderSide(color: Colors.black),
-                   )
-               ),
-             ),
-             SizedBox(height: 20),
-             TextField(
-               decoration: InputDecoration(
-                   fillColor: Colors.white,
-                   filled: true,
-                   hintText: 'Firstname',
-                   border: OutlineInputBorder(
-                     borderRadius : BorderRadius.circular(10),
-                     borderSide: const BorderSide(color: Colors.black),
-                   )
-               ),
-             ),
-             SizedBox(height: 20),
-             TextField(
-               decoration: InputDecoration(
-                   fillColor: Colors.white,
-                   filled: true,
-                   hintText: 'Lastname',
-                   border: OutlineInputBorder(
-                     borderRadius : BorderRadius.circular(10),
-                     borderSide: const BorderSide(color: Colors.black),
-                   )
-               ),
-             ),
-             const SizedBox(height: 20),
-             TextField(
-               decoration: InputDecoration(
-                   fillColor: Colors.white,
-                   filled: true,
-                   hintText: 'Date Of Birth',
-                   border: OutlineInputBorder(
-                     borderRadius : BorderRadius.circular(10),
-                     borderSide: const BorderSide(color: Colors.black),
-                   )
-               ),
-             ),
-             const SizedBox(height: 80),
-             Row(
-               mainAxisAlignment: MainAxisAlignment.center,
-               children: [
-                 ElevatedButton(
-
-                   style:ButtonStyle(
-                     backgroundColor: MaterialStateProperty.all(Colors.red),
-                     foregroundColor: MaterialStateProperty.all(Colors.white),
-                     padding:MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.1)),
-
-                     shape: MaterialStateProperty.all(const RoundedRectangleBorder(
-                       borderRadius: BorderRadius.all(Radius.circular(50)),
-                     )),
-                   ),
-                   child: const Text('Complete',),
-
-                   onPressed:()
-                   {
-                     print('Completed');
-                   },
+                 decoration: InputDecoration(
+                     fillColor: Colors.white,
+                     filled: true,
+                     hintText: 'Username',
+                     border: OutlineInputBorder(
+                       borderRadius : BorderRadius.circular(10),
+                       borderSide: const BorderSide(color: Colors.black),
+                     )
                  ),
-               ],
-             ),
-           ],
+               ),
+               SizedBox(height: 20),
+               TextField(
+                 decoration: InputDecoration(
+                     fillColor: Colors.white,
+                     filled: true,
+                     hintText: 'Firstname',
+                     border: OutlineInputBorder(
+                       borderRadius : BorderRadius.circular(10),
+                       borderSide: const BorderSide(color: Colors.black),
+                     )
+                 ),
+               ),
+               SizedBox(height: 20),
+               TextField(
+                 decoration: InputDecoration(
+                     fillColor: Colors.white,
+                     filled: true,
+                     hintText: 'Lastname',
+                     border: OutlineInputBorder(
+                       borderRadius : BorderRadius.circular(10),
+                       borderSide: const BorderSide(color: Colors.black),
+                     )
+                 ),
+               ),
+               const SizedBox(height: 20),
+               TextField(
+                 decoration: InputDecoration(
+                     fillColor: Colors.white,
+                     filled: true,
+                     hintText: 'Date Of Birth',
+                     border: OutlineInputBorder(
+                       borderRadius : BorderRadius.circular(10),
+                       borderSide: const BorderSide(color: Colors.black),
+                     )
+                 ),
+               ),
+               const SizedBox(height: 80),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 children: [
+                   ElevatedButton(
 
+                     style:ButtonStyle(
+                       backgroundColor: MaterialStateProperty.all(Colors.red),
+                       foregroundColor: MaterialStateProperty.all(Colors.white),
+                       padding:MaterialStateProperty.all(EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width*0.1)),
+
+                       shape: MaterialStateProperty.all(const RoundedRectangleBorder(
+                         borderRadius: BorderRadius.all(Radius.circular(50)),
+                       )),
+                     ),
+                     child: const Text('Complete',),
+
+                     onPressed:()
+                     {
+                       print('Completed');
+                     },
+                   ),
+                 ],
+               ),
+             ],
+
+           ),
          )
 
     );
