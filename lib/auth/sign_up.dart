@@ -39,7 +39,7 @@ class _SignUpState extends State<SignUp> {
               child: Stack(
                 children: [
                   Container(
-                    padding: const EdgeInsets.only(left: 10,top:350) ,
+                    padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.40) ,
                     child: Text('Sign Up',style: TextStyle(color: Colors.red[900],fontSize: 28,fontFamily: 'Montserrat',fontWeight: FontWeight.w700 ),),
                   ),
                   SingleChildScrollView(
@@ -53,6 +53,9 @@ class _SignUpState extends State<SignUp> {
                               fillColor: Colors.white,
                               filled: true,
                               hintText: 'Email',
+                              prefixIcon: const Icon(
+                                Icons.email,
+                              ),
                               border: OutlineInputBorder(
                                 borderRadius : BorderRadius.circular(10),
                                 borderSide: const BorderSide(color: Colors.black),
@@ -67,9 +70,12 @@ class _SignUpState extends State<SignUp> {
                                 fillColor: Colors.white,
                                 filled: true,
                                 hintText: 'Password',
+                                prefixIcon: const Icon(
+                                  Icons.key,
+                                ),
                                 suffixIcon: InkWell(
                                   onTap: _visiblePassword,
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.visibility,
                                   ),
                                 ),
@@ -87,9 +93,12 @@ class _SignUpState extends State<SignUp> {
                                 fillColor: Colors.white,
                                 filled: true,
                                 hintText: 'Rewrite Password',
+                                prefixIcon: const Icon(
+                                  Icons.key,
+                                ),
                                 suffixIcon: InkWell(
                                   onTap: _visiblePasswords,
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.visibility,
                                   ),
                                 ),

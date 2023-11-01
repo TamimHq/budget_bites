@@ -1,7 +1,4 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 
 class ProfileEdit extends StatefulWidget {
   const ProfileEdit({super.key});
@@ -44,12 +41,9 @@ class _ProfileEditState extends State<ProfileEdit> {
          body: SingleChildScrollView(
            child: Column(
 
-             children: <Widget>[
-            SizedBox(height: 65),
+             children: [
+            const SizedBox(height: 65),
                TextField(
-
-
-
                  decoration: InputDecoration(
                      fillColor: Colors.white,
                      filled: true,
@@ -72,7 +66,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                      )
                  ),
                ),
-               SizedBox(height: 20),
+               const SizedBox(height: 20),
                TextField(
                  decoration: InputDecoration(
                      fillColor: Colors.white,
@@ -120,10 +114,10 @@ class _ProfileEditState extends State<ProfileEdit> {
                    ),
                  ],
                ),
-             ],
-
+             
+        ],
            ),
-         )
+         ),
 
     );
   }

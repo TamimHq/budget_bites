@@ -1,12 +1,10 @@
-import 'package:budgets_bites/profile_edit/profile_editing.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-
-
+import 'auth/sign_in.dart';
 import 'boot_up/splash.dart';
-
 void main() {
-  runApp(  const MyApp());
+  runApp(   MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -16,12 +14,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return   GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
 
-      ),
-      home: const ProfileEdit(),
+      home: SignIn()  ,
     );
   }
 }
