@@ -1,4 +1,6 @@
+import 'package:budgets_bites/FirebaseAuthentication/firebase_auth_signin.dart';
 import 'package:budgets_bites/auth/sign_up.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 
@@ -12,8 +14,21 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final TextEditingController passwordController = TextEditingController();
+  final FirebaseAuthService _auth = FirebaseAuthService();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   bool isPasswordHidden = true;
+
+  @override
+  void dispose(){
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+
+  }
+
 
   @override
   Widget build(BuildContext context) => Builder(builder: (context) {
@@ -46,6 +61,7 @@ class _SignInState extends State<SignIn> {
                     child: Column(
                       children: [
                         TextField(
+                          controller: _emailController,
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               filled: true,
@@ -63,7 +79,7 @@ class _SignInState extends State<SignIn> {
                           height: 7,
                         ),
                         TextField(
-                          controller: passwordController,
+                          controller: _passwordController,
                           obscureText: isPasswordHidden,
                           decoration: InputDecoration(
                               fillColor: Colors.white,
@@ -120,7 +136,7 @@ class _SignInState extends State<SignIn> {
                             'Sign in',
                           ),
                           onPressed: () {
-                            print('Completed');
+                            _signIn();
                           },
                         ),
                         Row(
@@ -210,5 +226,22 @@ class _SignInState extends State<SignIn> {
     setState(() {
       isPasswordHidden = !isPasswordHidden;
     });
+  }
+  void _signIn() async{
+    String email = _emailController.text;
+    String password = _passwordController.text;
+
+    User? user = await _auth.signInWithEmailAndPassword(email, password);
+
+    if(user != null){
+      const SnackBar(
+        content: Text("Log in Success"),
+      );
+    }
+    else{
+      const SnackBar(
+        content: Text("Error!"),
+      );
+    }
   }
 }
