@@ -1,7 +1,7 @@
 import 'package:budgets_bites/auth/usermodel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../FirebaseAuthentication/firebase_auth_signup.dart';
+import '../FirebaseAuthentication/firebase_auth_controller.dart';
 import '../FirebaseAuthentication/user.dart';
 class SignUpController extends GetxController{
   static SignUpController get instance => Get.find();
@@ -10,13 +10,15 @@ class SignUpController extends GetxController{
   final  passwordController = TextEditingController();
   final  rewritePasswordController = TextEditingController();
 
-  void registerUser(String email, String password){
-    String? error= Authentication.instance.createUserWithEmailAndPassword(email, password) as String?;
-    if(error!= null){
-      Get.showSnackbar(GetSnackBar(message: error.toString(),));
+  Future<void> registerUser(String email, String password) async {
+    try {
+      final auth =Authentication.instance;
+      await Authentication.instance.createUserWithEmailAndPassword(email, password);
+      auth.setInitialScreen(auth.firebaseUser.value);
+    } catch (error) {
+      Get.showSnackbar(GetSnackBar(message: error.toString()));
     }
   }
-
   final userRepo =Get.put(UserUse());
 
   Future <void> createUser(UserModel user) async
@@ -24,6 +26,4 @@ class SignUpController extends GetxController{
     await userRepo.createUser(user);
 
   }
-
-
 }

@@ -5,8 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:auth_buttons/auth_buttons.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-
-import '../Dashboard/main_dash_board.dart';
+import '../FirebaseAuthentication/exception_handelar_signup.dart';
 import 'signup_controller.dart';
 
 class SignUp extends StatefulWidget{
@@ -54,7 +53,7 @@ class _SignUpState extends State<SignUp> {
                         padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.45),
                         child: Column(
                           children: [
-                            TextField(
+                            TextFormField(
                               controller: controller.emailController,
                               decoration: InputDecoration(
                                 fillColor: Colors.white,
@@ -64,13 +63,21 @@ class _SignUpState extends State<SignUp> {
                                   Icons.email,
                                 ),
                                 border: OutlineInputBorder(
-                                  borderRadius : BorderRadius.circular(10),
+                                  borderRadius: BorderRadius.circular(10),
                                   borderSide: const BorderSide(color: Colors.black),
-                                )
+                                ),
                               ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your email';
+                                } else if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$').hasMatch(value)) {
+                                  return 'Please enter a valid email address';
+                                }
+                                return null; // Return null if the input is valid
+                              },
                             ),
 
-                            TextField(
+                            TextFormField(
                               controller: controller.passwordController,
                               obscureText: isPasswordHidden,
                               decoration: InputDecoration(
@@ -89,11 +96,20 @@ class _SignUpState extends State<SignUp> {
                                   border: OutlineInputBorder(
                                     borderRadius : BorderRadius.circular(10),
                                     borderSide: const BorderSide(color: Colors.black),
-
                                   )
                               ),
+                              validator: (value) {
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter your password';
+                                } else if (value.length < 6) {
+                                  return 'Password must be at least 6 characters long';
+                                } else if (!RegExp(r'^(?=.*[0-9])(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]+$').hasMatch(value)) {
+                                  return 'Password must contain at least one special character and one number';
+                                }
+                                return null; // Return null if the input is valid
+                              },
                             ),
-                            TextField(
+                            TextFormField(
                               controller: controller.rewritePasswordController,
                               obscureText: isRewritePasswordHidden,
                               decoration: InputDecoration(
@@ -141,25 +157,36 @@ class _SignUpState extends State<SignUp> {
                                              ),
                                       child: const Text('SIGNUP',),
 
-                                      onPressed:()
+                                      onPressed:() async
                                       {
-                                      if (doPasswordsMatch()) {
-                                      // Passwords match and are strong, proceed with sign-up
-                                      final user = UserModel(
-                                      email: controller.emailController.text.trim(),
-                                      password: controller.passwordController.text.trim(),
-                                      );
-                                      SignUpController.instance.registerUser(controller.emailController.text.trim(),controller.passwordController.text.trim());
-                                      SignUpController.instance.createUser(user);
-                                      Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                      builder: (context) =>
-                                      const Dashboard(),
-                                      ));
-                                        } else {
+                                      if (doPasswordsMatch()&& _formKey.currentState!.validate()) {
+                                        // Passwords match and are strong, proceed with sign-up
+
+                                          final user = UserModel(
+                                            email: controller.emailController.text.trim(),
+                                            password: controller.passwordController.text.trim(),
+                                          );
+
+                                         await SignUpController.instance.registerUser(user.email, user.password);
+                                          await SignUpController.instance.createUser(user);
+
+
+
+                                          // Clear the text fields
+                                          controller.emailController.clear();
+                                          controller.passwordController.clear();
+                                          controller.rewritePasswordController.clear();
+
+                                          // Navigate to Dashboard on successful signup
+
+                                      }
+                                      else {
                                           // Passwords do not match or are weak, display an error message or handle accordingly
-                                          print('Sign Up failed');
+                                        ScaffoldMessenger.of(context).showSnackBar(
+                                            const SnackBar(
+                                            content: Text('Sign UP Failur'),
+                                        duration: Duration(seconds: 3)
+                                            ));
                                         }
 
                                       },
@@ -174,9 +201,9 @@ class _SignUpState extends State<SignUp> {
                              Row(
                                mainAxisAlignment: MainAxisAlignment.center,
                                children: [
-                                 const Text('Alreay have an account?',style:TextStyle(fontSize: 10) ,),
+                                 const Text('Alreay have an account?',style:TextStyle(fontSize: 15) ,),
                                  const SizedBox(
-                                   width: 10,
+                                   width: 5,
                                  ),
 
                                  InkWell(
@@ -184,7 +211,7 @@ class _SignUpState extends State<SignUp> {
                                        Navigator.push(context,
                                            MaterialPageRoute(builder: (context)=>const SignIn()));
                                      },
-                                     child: Text('sign in',style: TextStyle(fontSize: 10,color: Colors.blueAccent[200]),)),
+                                     child: Text('sign in',style: TextStyle(fontSize: 15,color: Colors.blueAccent[200]),)),
                                ],
                              ),
 
@@ -281,4 +308,9 @@ class _SignUpState extends State<SignUp> {
     });
   }
 
-}
+  void showErrorMessage(SignUpWithEmailAndPasswordFailure failure) {
+  final snackBar = SnackBar(content: Text(failure.message));
+  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+  }
+

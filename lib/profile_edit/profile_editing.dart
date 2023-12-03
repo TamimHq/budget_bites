@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../Dashboard/drawer.dart';
+
 class ProfileEdit extends StatefulWidget {
   const ProfileEdit({super.key});
 
@@ -14,8 +16,15 @@ class _ProfileEditState extends State<ProfileEdit> {
       appBar: AppBar(
         elevation: 0.0,
         title: const Text('Find your bio to get started'),
-        backgroundColor: Colors.pinkAccent,
-        leading: IconButton(onPressed: () {},
+        backgroundColor: Colors.blueAccent,
+        leading: IconButton(onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) =>
+                const DrawerWidget(),
+              ));
+        },
             icon:const Icon(
               Icons.arrow_back_ios,
               color: Colors.white,
@@ -24,7 +33,7 @@ class _ProfileEditState extends State<ProfileEdit> {
         bottom: PreferredSize(
             preferredSize: const Size.fromHeight(80.0),
             child: Container(
-              color: Colors.pinkAccent,
+              color: Colors.blueAccent,
               height: 50.0,
               child: const Center(
                 child: Icon(

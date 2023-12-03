@@ -1,9 +1,13 @@
-import 'package:budgets_bites/FirebaseAuthentication/firebase_auth_signin.dart';
+import 'package:budgets_bites/auth/sign_in_controller.dart';
 import 'package:budgets_bites/auth/sign_up.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:budgets_bites/auth/usermodel.dart';
+
 import 'package:flutter/material.dart';
 import 'package:auth_buttons/auth_buttons.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../FirebaseAuthentication/firebase_auth_controller.dart';
 import '../forget_password/reset_password.dart';
 
 class SignIn extends StatefulWidget {
@@ -14,20 +18,11 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final FirebaseAuthService _auth = FirebaseAuthService();
-
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final controller =Get.put(SignInController());
+  final _formKey= GlobalKey<FormState>();
 
   bool isPasswordHidden = true;
 
-  @override
-  void dispose(){
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-
-  }
 
 
   @override
@@ -55,162 +50,194 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 SingleChildScrollView(
-                  child: Container(
-                    padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.5),
-                    child: Column(
-                      children: [
-                        TextField(
-                          controller: _emailController,
-                          decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              hintText: 'Email',
-                              prefixIcon: const Icon(
-                                Icons.email,
+                  child: Form(
+                    key: _formKey,
+                    child: Container(
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.5),
+                      child: Column(
+                        children: [
+                          TextFormField(
+                            controller: controller.emailController,
+                            decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                hintText: 'Email',
+                                prefixIcon: const Icon(
+                                  Icons.email,
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide:
+                                      const BorderSide(color: Colors.black),
+                                )),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Please enter your email';
+                              } else if (!RegExp(r'^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$').hasMatch(value)) {
+                                return 'Please enter a valid email address';
+                              }
+                              return null; // Return null if the input is valid
+                            },
+                          ),
+                          const SizedBox(
+                            height: 7,
+                          ),
+                          TextFormField(
+                            controller: controller.passwordController,
+                            obscureText: isPasswordHidden,
+                            decoration: InputDecoration(
+                                fillColor: Colors.white,
+                                filled: true,
+                                hintText: 'Password',
+                                prefixIcon: const Icon(
+                                  Icons.key,
+                                ),
+                                suffixIcon: InkWell(
+                                  onTap: _visiblePassword,
+                                  child: const Icon(
+                                    Icons.visibility,
+                                  ),
+                                ),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                  borderSide:
+                                      const BorderSide(color: Colors.black),
+                                )),
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                child: Text(
+                                  'Forget Password',
+                                  style: TextStyle(
+                                      fontSize: 10, color: Colors.lightBlue[200]),
+                                ),
+                                onPressed: () {
+                                  ForgetPasswordScreen.buildShowModalBottomSheet(context);
+                                },
                               ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    const BorderSide(color: Colors.black),
+                            ],
+                          ),
+                          ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor:
+                                  MaterialStateProperty.all(Colors.red[900]),
+                              foregroundColor:
+                                  MaterialStateProperty.all(Colors.white),
+                              padding: MaterialStateProperty.all(
+                                  EdgeInsets.symmetric(
+                                      horizontal:
+                                          MediaQuery.of(context).size.width *
+                                              0.1)),
+                              shape: MaterialStateProperty.all(
+                                  const RoundedRectangleBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50)),
                               )),
-                        ),
-                        const SizedBox(
-                          height: 7,
-                        ),
-                        TextField(
-                          controller: _passwordController,
-                          obscureText: isPasswordHidden,
-                          decoration: InputDecoration(
-                              fillColor: Colors.white,
-                              filled: true,
-                              hintText: 'Password',
-                              prefixIcon: const Icon(
-                                Icons.key,
+                            ),
+                            child: const Text(
+                              'Sign in',
+                            ),
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                               try {
+                                 final user = UserModel(
+                                   email: controller.emailController.text
+                                       .trim(),
+                                   password: controller.passwordController.text
+                                       .trim(),
+                                 );
+
+                                 SignInController.instance.login(
+                                     user.email, user.password);
+                                 controller.emailController.clear();
+                                 controller.passwordController.clear();
+                               }catch(e){
+                                 ScaffoldMessenger.of(context).showSnackBar(
+                                     const SnackBar(
+                                         content: Text('Sign In Fail'),
+                                         duration: Duration(seconds: 3)
+                                     ));
+                               }
+                              }
+
+                            },
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                "Don't have an account?",
+                                style: TextStyle(fontSize: 15),
                               ),
-                              suffixIcon: InkWell(
-                                onTap: _visiblePassword,
-                                child: const Icon(
-                                  Icons.visibility,
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SignUp()));
+                                  },
+                                  child: Text(
+                                    'sign up',
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.blueAccent[200]),
+                                  )),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 40,
+                          ),
+                          const Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 25.0)),
+                          Row(
+                            children: [
+                              Expanded(
+                                  child: Divider(
+                                thickness: 1.0,
+                                color: Colors.grey[600],
+                              )),
+                              const Text('or Login with'),
+                              Expanded(
+                                  child: Divider(
+                                thickness: 1.0,
+                                color: Colors.grey[600],
+                              )),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 30,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              GoogleAuthButton(
+                                onPressed: () {},
+                                style: const AuthButtonStyle(
+                                  buttonType: AuthButtonType.icon,
+                                  iconType: AuthIconType.secondary,
                                 ),
                               ),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
-                                borderSide:
-                                    const BorderSide(color: Colors.black),
-                              )),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            TextButton(
-                              child: Text(
-                                'Forget Password',
-                                style: TextStyle(
-                                    fontSize: 10, color: Colors.lightBlue[200]),
+                              const SizedBox(
+                                width: 5,
                               ),
-                              onPressed: () {
-                                ForgetPasswordScreen.buildShowModalBottomSheet(context);
-                              },
-                            ),
-                          ],
-                        ),
-                        ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.red[900]),
-                            foregroundColor:
-                                MaterialStateProperty.all(Colors.white),
-                            padding: MaterialStateProperty.all(
-                                EdgeInsets.symmetric(
-                                    horizontal:
-                                        MediaQuery.of(context).size.width *
-                                            0.1)),
-                            shape: MaterialStateProperty.all(
-                                const RoundedRectangleBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(50)),
-                            )),
-                          ),
-                          child: const Text(
-                            'Sign in',
-                          ),
-                          onPressed: () {
-                            _signIn();
-                          },
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Text(
-                              "Don't have an account?",
-                              style: TextStyle(fontSize: 10),
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            InkWell(
-                                onTap: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const SignUp()));
-                                },
-                                child: Text(
-                                  'sign up',
-                                  style: TextStyle(
-                                      fontSize: 10,
-                                      color: Colors.blueAccent[200]),
-                                )),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                        const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 25.0)),
-                        Row(
-                          children: [
-                            Expanded(
-                                child: Divider(
-                              thickness: 1.0,
-                              color: Colors.grey[600],
-                            )),
-                            const Text('or Login with'),
-                            Expanded(
-                                child: Divider(
-                              thickness: 1.0,
-                              color: Colors.grey[600],
-                            )),
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GoogleAuthButton(
-                              onPressed: () {},
-                              style: const AuthButtonStyle(
-                                buttonType: AuthButtonType.icon,
-                                iconType: AuthIconType.secondary,
+                              FacebookAuthButton(
+                                onPressed: () {},
+                                style: const AuthButtonStyle(
+                                  buttonType: AuthButtonType.icon,
+                                  iconType: AuthIconType.secondary,
+                                ),
                               ),
-                            ),
-                            const SizedBox(
-                              width: 5,
-                            ),
-                            FacebookAuthButton(
-                              onPressed: () {},
-                              style: const AuthButtonStyle(
-                                buttonType: AuthButtonType.icon,
-                                iconType: AuthIconType.secondary,
-                              ),
-                            ),
-                          ],
-                        )
-                      ],
+                            ],
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -227,21 +254,5 @@ class _SignInState extends State<SignIn> {
       isPasswordHidden = !isPasswordHidden;
     });
   }
-  void _signIn() async{
-    String email = _emailController.text;
-    String password = _passwordController.text;
 
-    User? user = await _auth.signInWithEmailAndPassword(email, password);
-
-    if(user != null){
-      const SnackBar(
-        content: Text("Log in Success"),
-      );
-    }
-    else{
-      const SnackBar(
-        content: Text("Error!"),
-      );
-    }
-  }
 }
