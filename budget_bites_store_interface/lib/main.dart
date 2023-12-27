@@ -1,4 +1,7 @@
+import 'package:budget_bites_store_interface/all%20pages/sign_in/sign_in_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'all pages/sign_up/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,12 +15,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
        
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const SignUpScreen(),
     );
   }
 }
