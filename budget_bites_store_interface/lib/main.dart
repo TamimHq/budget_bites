@@ -1,7 +1,6 @@
-import 'package:budget_bites_store_interface/all%20pages/sign_in/sign_in_screen.dart';
+import 'package:budget_bites_store_interface/all%20pages/starting_screen/boot_up_screen.dart';
 import 'package:flutter/material.dart';
 
-import 'all pages/sign_up/sign_up_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignUpScreen(),
+      home: const BootUpScreen(),
     );
   }
 }
