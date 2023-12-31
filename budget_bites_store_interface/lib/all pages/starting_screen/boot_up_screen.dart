@@ -1,6 +1,7 @@
-import 'package:budget_bites_store_interface/all%20pages/sign_in/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../sign_in/sign_in_screen.dart';
 
 class BootUpScreen extends StatefulWidget{
   const BootUpScreen({super.key});
