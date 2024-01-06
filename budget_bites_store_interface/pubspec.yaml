@@ -81,6 +81,28 @@ flutter:
     - asset/images/img_group_18.svg
     - asset/images/img_ellipse_12.svg
     - asset/images/img_ellipse_11.png
+    - asset/images/img_group_76.svg
+    - asset/images/img_vector.svg
+    - asset/images/img_group_72.svg
+    - asset/images/img_close.svg
+    - asset/images/img_vector.svg
+    - asset/images/img_vector_red_600.svg
+    - asset/images/img_vector_yellow_700.svg
+    - asset/images/img_facebook.svg
+    - asset/images/img_vector_yellow_700_86x30.svg
+    - asset/images/img_facebook_red_600.svg
+    - asset/images/img_info.svg
+    - asset/images/img_location.svg
+    - asset/images/img_vector_yellow_a100_01.svg
+    - asset/images/img_vector_yellow_300_01.svg
+    - asset/images/img_vector_yellow_a100.svg
+    - asset/images/img_vector_green_600.svg
+    - asset/images/img_vector_light_green_500.svg
+    - asset/images/img_vector_green_600_31x21.svg
+    - asset/images/img_notification.svg
+    - asset/images/img_vector_light_green_500_40x48.svg
+    - asset/images/img_right_arrow_1.svg
+    - asset/images/img_right_arrow_1_primary.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

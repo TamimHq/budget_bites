@@ -17,7 +17,7 @@ class OnBoardScreenOne extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           width: MediaQuery.sizeOf(context).width,
-          padding: EdgeInsets.symmetric(vertical: 40),
+          padding: EdgeInsets.symmetric(vertical: 45),
           child: Column(
             children: [
               Container(

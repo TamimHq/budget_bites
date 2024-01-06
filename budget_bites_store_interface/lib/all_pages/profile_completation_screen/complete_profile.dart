@@ -8,5 +8,5 @@ class CompleteProfileScreen extends StatelessWidget{
     // TODO: implement build
     throw UnimplementedError();
   }
-  
+
 }
