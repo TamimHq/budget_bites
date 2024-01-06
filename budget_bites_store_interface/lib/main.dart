@@ -6,7 +6,9 @@ import 'package:flutter/material.dart';
 import 'all_pages/add_bank_account_screen/add_bank.dart';
 import 'all_pages/onboarding_screens/onboard_screen_final.dart';
 import 'all_pages/onboarding_screens/onboard_screen_one.dart';
+import 'all_pages/profile_completation_screen/complete_profile.dart';
 import 'all_pages/sign_in/sign_in_screen.dart';
+
 
 
 void main() {
@@ -27,7 +29,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+<<<<<<< Updated upstream
       home: const OnBoardScreenFinal(),
+=======
+      home: const CompleteProfileScreen(),
+>>>>>>> Stashed changes
     );
   }
 }
