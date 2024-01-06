@@ -38,11 +38,11 @@ class OnBoardScreenOne extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              _imageFormate(),
+              _ImageFormat(),
               SizedBox(height:39),
-              msg1(),
+              Msg1(),
               SizedBox(height: 25,),
-              msg2(),
+              Msg2(),
               SizedBox(height: 36),
               SizedBox(
                 height: 9,
@@ -103,8 +103,8 @@ class OnBoardScreenOne extends StatelessWidget {
   }
 }
 
-class msg2 extends StatelessWidget {
-  const msg2({
+class Msg2 extends StatelessWidget {
+  const Msg2({
     super.key,
   });
 
@@ -147,8 +147,8 @@ class msg2 extends StatelessWidget {
   }
 }
 
-class msg1 extends StatelessWidget {
-  const msg1({
+class Msg1 extends StatelessWidget {
+  const Msg1({
     super.key,
   });
 
@@ -172,8 +172,8 @@ class msg1 extends StatelessWidget {
   }
 }
 
-class _imageFormate extends StatelessWidget {
-  const _imageFormate({
+class _ImageFormat extends StatelessWidget {
+  const _ImageFormat({
     super.key,
   });
 
