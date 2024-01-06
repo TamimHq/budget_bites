@@ -1,7 +1,10 @@
+import 'package:budget_bites_store_interface/all_pages/onboarding_screens/onboard_screen_three.dart';
+import 'package:budget_bites_store_interface/all_pages/onboarding_screens/onboard_screen_two.dart';
 import 'package:budget_bites_store_interface/all_pages/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'all_pages/add_bank_account_screen/add_bank.dart';
+import 'all_pages/onboarding_screens/onboard_screen_one.dart';
 import 'all_pages/sign_in/sign_in_screen.dart';
 
 
@@ -23,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SignUpScreen(),
+      home: const OnBoardScreenOne(),
     );
   }
 }

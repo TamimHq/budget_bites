@@ -38,6 +38,9 @@ dependencies:
   flutter_svg: ^2.0.9
   google_sign_in: ^5.0.7
   auth_buttons: ^3.0.2
+  smooth_page_indicator: ^1.1.0
+  flutter_svg_provider: ^1.0.7
+  cached_network_image: ^3.3.1
 
 dev_dependencies:
   flutter_test:
@@ -67,6 +70,17 @@ flutter:
     - asset/images/img_sign_up_pana.svg
     - asset/images/LOGO.png
     - asset/images/img_rectangle_1799.png
+    - asset/images/img_logo_yellow_700.svg
+    - asset/images/img_take_away_cuate.svg
+    - asset/images/img_group_1292.svg
+    - asset/images/img_location_yellow_300.png
+    - asset/images/img_illustration.svg
+    - asset/images/img_group_53.svg
+    - asset/images/img_group_29.svg
+    - asset/images/img_group_13.svg
+    - asset/images/img_group_18.svg
+    - asset/images/img_ellipse_12.svg
+    - asset/images/img_ellipse_11.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
