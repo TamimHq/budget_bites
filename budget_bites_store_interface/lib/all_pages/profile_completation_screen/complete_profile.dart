@@ -37,33 +37,33 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
         ),
 
 
-        body: Form(
-            child: Container(
+        body: SingleChildScrollView(
+          child: Form(
               child: SizedBox(
                 width: MediaQuery.sizeOf(context).width,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 80,),
-
+          
                     TopDesign(),
-
+          
                     SizedBox(height: 28,),
                     TextFormField(
-
+          
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20),
                               borderSide: const BorderSide(
                                 color: Colors.yellowAccent,
                               )
-
+          
                           ),
-
+          
                           hintText: "Your Username"
                       ),
-
-
+          
+          
                     ),
                     const SizedBox(height: 5,),
                     TextFormField(
@@ -73,15 +73,15 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                               borderSide: const BorderSide(
                                 color: Colors.yellowAccent,
                               )
-
+          
                           ),
-
+          
                           hintText: "FullName"
                       ),
-
+          
                     ),
                     const SizedBox(height: 5,),
-
+          
                     TextFormField(
                       controller: date,
                       decoration: InputDecoration(
@@ -91,11 +91,11 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                           ),
                           labelText: "Select your Birth Date"
                       ),
-
+          
                       onTap: () async {
                         DateTime? pickedDate = await showDatePicker(
                           context: context,
-
+          
                           firstDate: DateTime(1950),
                           lastDate: DateTime(2015),
                         );
@@ -105,7 +105,7 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                           });
                         }
                       },
-
+          
                     ),
                     const SizedBox(height: 5,),
                     TextFormField(
@@ -115,12 +115,12 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                               borderSide: const BorderSide(
                                 color: Colors.yellowAccent,
                               )
-
+          
                           ),
-
+          
                           hintText: "Name of the Store"
                       ),
-
+          
                     ),
                     const SizedBox(height: 5,),
                     TextFormField(
@@ -130,12 +130,12 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                               borderSide: const BorderSide(
                                 color: Colors.yellowAccent,
                               )
-
+          
                           ),
-
+          
                           hintText: "Store Location"
                       ),
-
+          
                     ),
                     const SizedBox(height: 10,),
                     Row(
@@ -171,11 +171,9 @@ class _CompleteProfileScreenState extends State<CompleteProfileScreen> {
                   ],
                 ),
               ),
-
-
-            ),
-
-
+          
+          
+          ),
         ),
        extendBodyBehindAppBar: true,
     );

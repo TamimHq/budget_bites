@@ -108,6 +108,8 @@ flutter:
     - asset/images/img_camera.svg
     - asset/images/img_icon_message.png
     - asset/images/img_icon_email.png
+    - asset/images/img_pattern.svg
+    - asset/images/img_checkmark_onprimary.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,5 +1,6 @@
 import 'package:budget_bites_store_interface/all_pages/onboarding_screens/onboard_screen_three.dart';
 import 'package:budget_bites_store_interface/all_pages/onboarding_screens/onboard_screen_two.dart';
+import 'package:budget_bites_store_interface/all_pages/profile_completation_screen/profile_success_screen.dart';
 import 'package:budget_bites_store_interface/all_pages/sign_up/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ForgetPasswordScreen(),
+      home: const ProfileSuccessScreen(),
     );
   }
 }
