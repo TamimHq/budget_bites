@@ -1,48 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../sign_in/sign_in_screen.dart';
-
-class BootUpScreen extends StatefulWidget{
+class BootUpScreen extends StatefulWidget {
   const BootUpScreen({super.key});
 
   @override
   State<BootUpScreen> createState() => _BootUpScreenState();
 }
 
-class _BootUpScreenState extends State<BootUpScreen> with SingleTickerProviderStateMixin{
-
-  late AnimationController _controller;
-  late Animation<double> _opacityAnimation;
+class _BootUpScreenState extends State<BootUpScreen>
+    with TickerProviderStateMixin {
+  late Animation<double> animation;
+  late AnimationController controller;
 
   @override
   void initState() {
     super.initState();
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-
-    _controller = AnimationController(
+    controller = AnimationController(
       vsync: this,
-      duration: const Duration(seconds: 1),
-    );
+      duration: const Duration(seconds: 3),
+    )..forward();
 
-    _opacityAnimation = Tween<double>(begin: 0, end: 1).animate(_controller);
-
-    _controller.forward();
-
-    Future.delayed(const Duration(seconds: 4), () {
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const SignInScreen()),
-      );
-    });
+    animation = new CurvedAnimation(parent: controller, curve: Curves.bounceIn);
   }
-
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-    _controller.dispose();
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
+    controller.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,13 +49,16 @@ class _BootUpScreenState extends State<BootUpScreen> with SingleTickerProviderSt
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              FadeTransition(
-                opacity: _opacityAnimation,
+              ScaleTransition(
+                scale: animation,
                 child: Image.asset('asset/images/LOGO.png'),
               ),
               const Text(
                 'Budget Bites',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.w600, fontFamily: 'Poppins'),
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: 'Poppins'),
               ),
             ],
           ),
