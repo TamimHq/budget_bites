@@ -1,13 +1,10 @@
-import 'package:budgets_bites/verification/email_verification.dart';
+import 'package:budgets_bites/all_pages/sign_up/sign_up_screen.dart';
+import 'package:budgets_bites/all_pages/starting_screen/boot_up_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'FirebaseAuthentication/firebase_auth_controller.dart';
-import 'boot_up/splash.dart';
 import 'firebase_options.dart';
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform).then((value)=>Get.put(Authentication()));
+void main()  {
 
 
   runApp(   const MyApp());
@@ -37,7 +34,7 @@ class _MyAppState extends State<MyApp> {
 
     return  const GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Splash(),
+      home: SignUpScreen(),
     );
   }
 }
