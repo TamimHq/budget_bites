@@ -1,3 +1,4 @@
+import 'package:budget_bites_store_interface/all_pages/Reset_password_screen/reset_pass_screen.dart';
 import 'package:budget_bites_store_interface/all_pages/onboarding_screens/onboard_screen_three.dart';
 import 'package:budget_bites_store_interface/all_pages/onboarding_screens/onboard_screen_two.dart';
 import 'package:budget_bites_store_interface/all_pages/profile_completation_screen/profile_success_screen.dart';
@@ -10,7 +11,6 @@ import 'all_pages/onboarding_screens/onboard_screen_final.dart';
 import 'all_pages/onboarding_screens/onboard_screen_one.dart';
 import 'all_pages/profile_completation_screen/complete_profile.dart';
 import 'all_pages/sign_in/sign_in_screen.dart';
-
 
 void main() {
   runApp(const MyApp());
@@ -26,13 +26,10 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-       
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const ProfileSuccessScreen(),
+      home: const reset_pass(),
     );
   }
 }
-
-
