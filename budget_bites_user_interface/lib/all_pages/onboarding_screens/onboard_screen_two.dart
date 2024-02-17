@@ -1,132 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardScreenTwo extends StatelessWidget{
-  const OnBoardScreenTwo({super.key});
+import '../../core/utils/image_constant.dart';
+import '../../core/utils/size_utils.dart';
+import '../../theme/custom_text_style.dart';
+import '../../widgets/custom_icon_button.dart';
+import '../../widgets/custom_image_view.dart';
+
+// ignore_for_file: must_be_immutable
+class OnboardingScreenTwo extends StatelessWidget {
+  const OnboardingScreenTwo({Key? key})
+      : super(
+    key: key,
+  );
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(
-          width: MediaQuery.sizeOf(context).width,
-          padding: EdgeInsets.symmetric(vertical: 40),
+    mediaQueryData = MediaQuery.of(context);
+
+    return SafeArea(
+      child: Scaffold(
+        body: SizedBox(
+          width: double.maxFinite,
+
           child: Column(
             children: [
-              Container(
-                width: 80, // Adjust the size of the circle box as needed
-                height: 80,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: Colors.red[700], // Set the background color of the circle if needed
-                ),
-                child: Padding(
-                  padding: EdgeInsets.all(6),
-                  child: SvgPicture.asset(
-                    'asset/images/img_logo_yellow_700.svg',
-                    height: 20,
-                    width: 20,
-                  ),
+              SizedBox(
+                height: 378.v,
+                width: 342.h,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    CustomIconButton(
+                      height: 60.adaptSize,
+                      width: 60.adaptSize,
+                      padding: EdgeInsets.all(7.h),
+                      decoration: IconButtonStyleHelper.fillPrimary,
+                      alignment: Alignment.topCenter,
+                      child: CustomImageView(
+                        imagePath: ImageConstant.imgSettings,
+                      ),
+                    ),
+                    CustomImageView(
+                      imagePath: ImageConstant.imgIllustration,
+                      height: 327.v,
+                      width: 342.h,
+                      alignment: Alignment.bottomCenter,
+                    ),
+                  ],
                 ),
               ),
-              SizedBox(height: 35,),
+              SizedBox(height: 32.v),
               Container(
-                child: SvgPicture.asset('asset/images/img_illustration.svg',height: 342,width: 327,),
-                alignment: Alignment.center,
-              ),
-              SizedBox(height: 32,),
-              Container(
-                width: 326,
+                width: 326.h,
                 margin: EdgeInsets.only(
-                  left: 5,
-                  right: 10,
+                  left: 5.h,
+                  right: 10.h,
                 ),
                 child: Text(
-                  "Your comfort food lies here",
+                  "Test fresh delicious meals anytime",
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFFF10027),
-                    fontSize: 24,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w700,
-                  ),
+                  style: CustomTextStyles.headlineSmallPrimary,
                 ),
               ),
-              SizedBox(height: 21),
+              SizedBox(height: 21.v),
               Align(
-                alignment: Alignment.center,
+                alignment: Alignment.centerLeft,
                 child: Container(
-                  width: 294,
+                  width: 294.h,
                   margin: EdgeInsets.only(
-                    left: 18,
-                    right: 29,
+                    left: 18.h,
+                    right: 29.h,
                   ),
                   child: Text(
                     "We provide well prepared meal at all hours of the day",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w400,
-                      height: 0,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: 36),
-              SizedBox(
-                height: 9,
-                child: AnimatedSmoothIndicator(
-                  activeIndex: 0,
-                  count: 3,
-                  effect:ScrollingDotsEffect(
-                    spacing: 6,
-                    activeDotColor: Colors.red.shade900,
-                    dotColor: Colors.orange.shade900,
-                    dotHeight: 9,
-                    dotWidth: 9,
-                  ),
-
-                ),
-              ),
-              SizedBox(height: 40),
-              ElevatedButton(
-                  onPressed: (){},
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red[900],
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Padding
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8), // Border radius
-                  ),
-                ),
-              ),
-              SizedBox(height: 25,),
-              InkWell(
-                onTap: (){},
-                child: Text(
-                  'Skip',
-                  style: TextStyle(
-                    color: Color(0xFF979797),
-                    fontSize: 15,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w500,
-                    height: 0,
+                    style: CustomTextStyles.bodyLargePoppins,
                   ),
                 ),
               ),
@@ -136,5 +90,6 @@ class OnBoardScreenTwo extends StatelessWidget{
       ),
     );
   }
-  
 }
+
+  /// Section Widget}

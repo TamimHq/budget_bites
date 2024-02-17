@@ -4,9 +4,14 @@ import 'package:flutter_svg_provider/flutter_svg_provider.dart' as fs;
 
 import '../../widgets/custom_image_view.dart';
 
-class OnBoardScreenFinal extends StatelessWidget {
+class OnBoardScreenFinal extends StatefulWidget {
   const OnBoardScreenFinal({super.key});
 
+  @override
+  State<OnBoardScreenFinal> createState() => _OnBoardScreenFinalState();
+}
+
+class _OnBoardScreenFinalState extends State<OnBoardScreenFinal> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -16,7 +21,7 @@ class OnBoardScreenFinal extends StatelessWidget {
           width: MediaQuery.sizeOf(context).width,
           padding: EdgeInsets.symmetric(
             horizontal: 3,
-            vertical: 45,
+            vertical: 15,
           ),
           child: Column(
             children: [
