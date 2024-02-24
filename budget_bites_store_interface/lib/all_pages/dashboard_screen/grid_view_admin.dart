@@ -1,3 +1,4 @@
+import 'package:budget_bites_store_interface/all_pages/add_food_items/add_food.dart';
 import 'package:budget_bites_store_interface/core/app_export.dart';
 import 'package:flutter/material.dart';
 
@@ -61,6 +62,7 @@ class _GridViewState extends State<GridViewAdmin> {
             }
             if (index == 2) {
               //3.item
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>AddFoodItems()));
             }
             if (index == 3) {
               //4.item
@@ -107,7 +109,7 @@ class _GridViewState extends State<GridViewAdmin> {
               padding: const EdgeInsets.all(2),
               children: [
                 makeDashboardItem("Check Rider", "asset/images/rider.jpg", 0),
-                makeDashboardItem("Check Orders", "asset/images/doublecart.png", 1),
+                makeDashboardItem("Check Orders", "asset/images/double_cart.png", 1),
                 makeDashboardItem("Add Food", "asset/images/food.png", 2),
                 makeDashboardItem("Check Inventory", "asset/images/inventory.jpg", 3),
 

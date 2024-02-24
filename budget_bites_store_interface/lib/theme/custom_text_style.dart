@@ -1,5 +1,3 @@
-import 'package:budget_bites_store_interface/core/utils/size_utils.dart';
-import 'package:budget_bites_store_interface/theme/theme_helper.dart';
 import 'package:flutter/material.dart';
 import '../core/app_export.dart';
 

@@ -1,3 +1,4 @@
+import 'package:budget_bites_store_interface/all_pages/add_food_items/add_food.dart';
 import 'package:budget_bites_store_interface/all_pages/dashboard_screen/grid_view_admin.dart';
 import 'package:budget_bites_store_interface/all_pages/dashboard_screen/home.dart';
 import 'package:budget_bites_store_interface/all_pages/onboarding_screens/onboard_screen_three.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const AddFoodItems(),
     );
   }
 }
